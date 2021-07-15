@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.mymessenger.databinding.ActivityMainBinding
 import com.mikepenz.materialdrawer.AccountHeader
+import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
+import com.mikepenz.materialdrawer.DrawerBuilder
+import com.mikepenz.materialdrawer.model.PrimaryDrawerItem
+import com.mikepenz.materialdrawer.model.ProfileDrawerItem
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,9 +27,42 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         initFields()
+        initFunc()
+    }
+
+    private fun initFunc() {
+        setSupportActionBar(mToolbar)
+        createHeader()
+        createDrawer()
+    }
+
+    private fun createDrawer() {
+        mDrawer = DrawerBuilder()
+            .withActivity(this)
+            .withToolbar(mToolbar)
+            .withActionBarDrawerToggle(true)
+            .withSelectedItem(-1)
+            .withAccountHeader(mHeader)
+            .addDrawerItems(
+                PrimaryDrawerItem().withIdentifier(100)
+                    .withIconTintingEnabled(true)
+                    .withName("Create Group")
+                    .withSelectable(false)
+            ).build()
+    }
+
+    private fun createHeader() {
+        mHeader = AccountHeaderBuilder()
+            .withActivity(this)
+            .withHeaderBackground(R.drawable.header)
+            .addProfiles(
+                ProfileDrawerItem().withName("Aljoscha Kozlov")
+                    .withEmail("aljoscha@gmail.com")
+            ).build()
     }
 
     private fun initFields() {
-        TODO("Not yet implemented")
+        mToolbar = mBinding.mainToolbar
+
     }
 }
