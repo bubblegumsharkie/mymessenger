@@ -2,11 +2,11 @@ package com.example.mymessenger
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.mymessenger.databinding.ActivityMainBinding
 import com.example.mymessenger.ui.ChatsFragment
+import com.example.mymessenger.ui.SettingsFragment
 import com.mikepenz.materialdrawer.AccountHeader
 import com.mikepenz.materialdrawer.AccountHeaderBuilder
 import com.mikepenz.materialdrawer.Drawer
@@ -105,6 +105,12 @@ class MainActivity : AppCompatActivity() {
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
                     println(position)
+                    when (position) {
+                        7 -> supportFragmentManager.beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.dataContainer, SettingsFragment())
+                            .commit()
+                    }
                     return false
                 }
             })
