@@ -2,4 +2,11 @@
     <string name="app_name">mymessenger</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="settings_default_name">Aljoscha</string>
+    <string name="settings_status">Online</string>
+    <string name="settings_label_phone_number">Tap to edit phone number</string>
+    <string name="settings_login_default">@username</string>
+    <string name="settings_label_login">Tap to change login</string>
+    <string name="settings_menu_change_name">Change name</string>
+    <string name="settings_menu_logout">Logout</string>
 </resources>

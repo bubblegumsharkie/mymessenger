@@ -58,6 +58,10 @@ dependencies {
     // Add for NavController support
     implementation "com.mikepenz:materialdrawer-nav:7.0.0"
 
+    //CircleImage: https://github.com/hdodenhof/CircleImageView
+
+    implementation 'de.hdodenhof:circleimageview:3.1.0'
+
 
 
 }

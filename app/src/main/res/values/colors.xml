@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="colorPrimary">#005577</color>
     <color name="colorPrimaryVariant">#003043</color>
+    <color name="colorGray">#BDBDBD</color>
 
     <!-- Material DEFAULT colors -->
     <color name="material_drawer_primary">#2196F3</color>
