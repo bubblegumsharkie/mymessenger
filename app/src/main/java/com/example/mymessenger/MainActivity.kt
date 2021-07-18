@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.mymessenger.databinding.ActivityMainBinding
-import com.example.mymessenger.ui.ChatsFragment
+import com.example.mymessenger.ui.fragments.ChatsFragment
 import com.example.mymessenger.ui.objects.AppDrawer
 
 class MainActivity : AppCompatActivity() {
