@@ -17,11 +17,8 @@ class EnterPhoneNumberFragment : BaseFragment(R.layout.fragment_enter_phone_numb
     private fun sendCode() {
         if (register_edit_phone.text.toString().isEmpty()) {
             Toast.makeText(
-                context,
-                getString(R.string.register_toast_enter_your_number),
-                Toast.LENGTH_LONG
+                activity, getString(R.string.register_toast_enter_your_number), Toast.LENGTH_LONG
             ).show()
-            println(getString(R.string.register_toast_enter_your_number))
         } else {
             //check if this works like deprecated fragmentManager \/
 //            fragmentManager?.beginTransaction()

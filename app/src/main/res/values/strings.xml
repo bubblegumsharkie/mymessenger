@@ -15,4 +15,5 @@
     <string name="register_hint_enter_code">- - - - - -</string>
     <string name="register_title_your_phone">Your phone</string>
     <string name="register_toast_enter_your_number">Input phone number please</string>
+    <string name="register_toast_code_verified">The code is verified!</string>
 </resources>

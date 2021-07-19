@@ -30,7 +30,6 @@ class EnterCodeFragment : BaseFragment(R.layout.fragment_enter_code) {
     }
 
     private fun verifyCode() {
-        Toast.makeText(context, "The code is verified!", Toast.LENGTH_SHORT).show()
-        println("Code verified!")
+        Toast.makeText(context, getString(R.string.register_toast_code_verified), Toast.LENGTH_SHORT).show()
     }
 }
