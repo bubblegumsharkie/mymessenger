@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        Toast.makeText(applicationContext, "HELLO!", Toast.LENGTH_LONG)
+        Toast.makeText(applicationContext, "HELLO!", Toast.LENGTH_LONG).show()
         initFields()
         initFunc()
     }
