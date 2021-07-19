@@ -9,4 +9,10 @@
     <string name="settings_label_login">Tap to change login</string>
     <string name="settings_menu_change_name">Change name</string>
     <string name="settings_menu_logout">Logout</string>
+    <string name="chat_blob_image_content_desc">chat_blob_image</string>
+    <string name="register_please_enter_code_text">Please input your code</string>
+    <string name="register_text_we_sent">We\'ve sent you a code to a phone number</string>
+    <string name="register_hint_enter_code">- - - - - -</string>
+    <string name="register_title_your_phone">Your phone</string>
+    <string name="register_toast_enter_your_number">Input phone number please</string>
 </resources>

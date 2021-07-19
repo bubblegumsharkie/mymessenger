@@ -89,7 +89,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, val mToolbar: Toolbar) {
                     when (position) {
                         7 -> mainActivity.supportFragmentManager.beginTransaction()
                             .addToBackStack(null)
-                            .replace(R.id.dataContainer, SettingsFragment())
+                            .replace(R.id.data_container, SettingsFragment())
                             .commit()
                     }
                     return false

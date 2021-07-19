@@ -1,8 +1,11 @@
 package com.example.mymessenger
 
+import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.example.mymessenger.activities.RegisterActivity
 import com.example.mymessenger.databinding.ActivityMainBinding
 import com.example.mymessenger.ui.fragments.ChatsFragment
 import com.example.mymessenger.ui.objects.AppDrawer
@@ -21,16 +24,23 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
+        Toast.makeText(applicationContext, "HELLO!", Toast.LENGTH_LONG)
         initFields()
         initFunc()
     }
 
     private fun initFunc() {
-        setSupportActionBar(mToolbar)
-        mDrawer.create()
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.dataContainer, ChatsFragment())
-            .commit()
+
+        if (false) {
+            setSupportActionBar(mToolbar)
+            mDrawer.create()
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.data_container, ChatsFragment())
+                .commit()
+        }
+
+        val intent = Intent(this, RegisterActivity::class.java)
+        startActivity(intent)
 
     }
 

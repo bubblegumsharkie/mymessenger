@@ -19,6 +19,7 @@
     <dimen name="settings_btn_change_image_height">45dp</dimen>
     <dimen name="settings_profile_image_border">0dp</dimen>
     <dimen name="settings_btn_ripple_effect_radius">4dp</dimen>
+    <dimen name="padding_default">5dp</dimen>
 
 
 </resources>
