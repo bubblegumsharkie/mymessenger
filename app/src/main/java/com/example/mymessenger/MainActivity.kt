@@ -1,14 +1,14 @@
 package com.example.mymessenger
 
-import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.mymessenger.activities.RegisterActivity
 import com.example.mymessenger.databinding.ActivityMainBinding
 import com.example.mymessenger.ui.fragments.ChatsFragment
 import com.example.mymessenger.ui.objects.AppDrawer
+import com.example.mymessenger.utils.replaceActivity
+import com.example.mymessenger.utils.replaceFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,16 +30,13 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFunc() {
 
-        if (false) {
+        if (true) {
             setSupportActionBar(mToolbar)
             mDrawer.create()
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.data_container, ChatsFragment())
-                .commit()
+            replaceFragment(ChatsFragment())
+        } else {
+            replaceActivity(RegisterActivity())
         }
-
-        val intent = Intent(this, RegisterActivity::class.java)
-        startActivity(intent)
 
     }
 

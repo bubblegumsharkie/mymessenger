@@ -28,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/settings_name"
+            android:id="@+id/settings_person_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_horizontal"
@@ -50,7 +50,7 @@
             android:textSize="@dimen/text_small"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/settings_profile_image"
-            app:layout_constraintTop_toBottomOf="@id/settings_name" />
+            app:layout_constraintTop_toBottomOf="@id/settings_person_name" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -96,31 +96,31 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/settings_login_field"
+        android:id="@+id/settings_username_field"
         style="@style/settings_fields"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/settings_phone_field">
 
         <TextView
-            android:id="@+id/settings_login"
+            android:id="@+id/settings_username"
             style="@style/text_body"
             android:text="@string/settings_login_default"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/settings_login_field" />
+            app:layout_constraintTop_toTopOf="@id/settings_username_field" />
 
         <TextView
-            android:id="@+id/settings_label_login"
+            android:id="@+id/settings_label_username"
             style="@style/text_small"
             android:text="@string/settings_label_login"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/settings_login" />
+            app:layout_constraintTop_toBottomOf="@id/settings_username" />
 
         <View
             style="@style/divider"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/settings_label_login" />
+            app:layout_constraintTop_toBottomOf="@id/settings_label_username" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -128,7 +128,7 @@
         style="@style/settings_fields"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/settings_login_field">
+        app:layout_constraintTop_toBottomOf="@id/settings_username_field">
 
         <TextView
             android:id="@+id/settings_about"
