@@ -2,7 +2,12 @@ package com.example.mymessenger.ui.fragments
 
 import android.view.Menu
 import android.view.MenuInflater
+import android.view.MenuItem
+import com.example.mymessenger.MainActivity
 import com.example.mymessenger.R
+import com.example.mymessenger.activities.RegisterActivity
+import com.example.mymessenger.utils.AUTH
+import com.example.mymessenger.utils.replaceActivity
 
 class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
@@ -16,4 +21,13 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         activity?.menuInflater?.inflate(R.menu.settings_action_menu, menu)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when(item.itemId) {
+            R.id.settings_menu_exit -> {
+                AUTH.signOut()
+                (activity as MainActivity).replaceActivity(RegisterActivity())
+            }
+        }
+        return true
+    }
 }
