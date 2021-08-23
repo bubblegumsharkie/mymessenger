@@ -16,4 +16,8 @@
     <string name="register_title_your_phone">Your phone</string>
     <string name="register_toast_enter_your_number">Input phone number please</string>
     <string name="register_toast_code_verified">The code is verified!</string>
+    <string name="settings_hint_input_name">Name</string>
+    <string name="settings_hint_input_surname">Surname</string>
+    <string name="settings_toast_empty_name">Enter your name please</string>
+    <string name="settings_toast_change_name_success">Info was successfully updated</string>
 </resources>
