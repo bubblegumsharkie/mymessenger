@@ -77,7 +77,7 @@
         <TextView
             android:id="@+id/settings_phone_number"
             style="@style/text_body"
-            android:text="+7 (999) 999-99-99"
+            tools:text="+7 (999) 999-99-99"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/settings_phone_field" />
 
@@ -105,7 +105,7 @@
         <TextView
             android:id="@+id/settings_username"
             style="@style/text_body"
-            android:text="@string/settings_login_default"
+            tools:text="@string/settings_login_default"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/settings_username_field" />
 
@@ -133,7 +133,7 @@
         <TextView
             android:id="@+id/settings_about"
             style="@style/text_body"
-            android:text="About"
+            tools:text="About"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/settings_about_field" />
 

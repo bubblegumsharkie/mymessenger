@@ -20,4 +20,5 @@
     <string name="settings_hint_input_surname">Surname</string>
     <string name="settings_toast_empty_name">Enter your name please</string>
     <string name="settings_toast_change_name_success">Info was successfully updated</string>
+    <string name="settings_hint_username">Username</string>
 </resources>

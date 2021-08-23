@@ -7,15 +7,28 @@ import com.example.mymessenger.MainActivity
 import com.example.mymessenger.R
 import com.example.mymessenger.activities.RegisterActivity
 import com.example.mymessenger.utils.AUTH
+import com.example.mymessenger.utils.USER
 import com.example.mymessenger.utils.replaceActivity
 import com.example.mymessenger.utils.replaceFragment
+import kotlinx.android.synthetic.main.fragment_settings.*
 
 class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
 
     override fun onResume() {
         super.onResume()
         setHasOptionsMenu(true)
+        initFields()
+    }
 
+    private fun initFields() {
+        settings_about.text = USER.bio
+        settings_person_name.text = USER.fullname
+        settings_phone_number.text = USER.phone
+        settings_status.text = USER.status
+        settings_username.text = USER.username
+        settings_username_field.setOnClickListener {
+            replaceFragment(ChangeUsernameFragment())
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

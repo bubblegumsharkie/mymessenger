@@ -5,13 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.mymessenger.activities.RegisterActivity
 import com.example.mymessenger.databinding.ActivityMainBinding
+import com.example.mymessenger.models.User
 import com.example.mymessenger.ui.fragments.ChatsFragment
 import com.example.mymessenger.ui.objects.AppDrawer
-import com.example.mymessenger.utils.AUTH
-import com.example.mymessenger.utils.initFirebase
-import com.example.mymessenger.utils.replaceActivity
-import com.example.mymessenger.utils.replaceFragment
-import com.google.firebase.auth.FirebaseAuth
+import com.example.mymessenger.utils.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -47,6 +44,14 @@ class MainActivity : AppCompatActivity() {
         mToolbar = mBinding.mainToolbar
         mDrawer = AppDrawer(this, mToolbar)
         initFirebase()
+        initUser()
 
+    }
+
+    private fun initUser() {
+        REF_DATABASE_ROOT.child(NODE_USERS).child(UID)
+            .addListenerForSingleValueEvent(AppValueEventListener {
+                USER = it.getValue(User::class.java) ?: User()
+            })
     }
 }
