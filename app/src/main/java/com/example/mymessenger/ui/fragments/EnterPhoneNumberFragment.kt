@@ -41,6 +41,7 @@ class EnterPhoneNumberFragment : BaseFragment(R.layout.fragment_enter_phone_numb
 
             override fun onCodeSent(p0: String, p1: PhoneAuthProvider.ForceResendingToken) {
                 replaceFragment(EnterCodeFragment(mPhoneNumber, p0))
+                println("Enter code fragment!")
             }
 
             override fun onVerificationFailed(p0: FirebaseException) {

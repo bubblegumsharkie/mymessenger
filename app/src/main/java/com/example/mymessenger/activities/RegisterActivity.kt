@@ -6,6 +6,7 @@ import androidx.appcompat.widget.Toolbar
 import com.example.mymessenger.R
 import com.example.mymessenger.databinding.ActivityRegisterBinding
 import com.example.mymessenger.ui.fragments.EnterPhoneNumberFragment
+import com.example.mymessenger.utils.initFirebase
 import com.example.mymessenger.utils.replaceFragment
 
 class RegisterActivity : AppCompatActivity() {
@@ -17,6 +18,7 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
+        initFirebase()
     }
 
 
@@ -25,6 +27,6 @@ class RegisterActivity : AppCompatActivity() {
         mToolbar = mBinding.registerToolbar
         setSupportActionBar(mToolbar)
         title = getString(R.string.register_title_your_phone)
-        replaceFragment(EnterPhoneNumberFragment(), false)
+        replaceFragment(EnterPhoneNumberFragment())
     }
 }

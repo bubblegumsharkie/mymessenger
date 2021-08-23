@@ -27,13 +27,9 @@ fun AppCompatActivity.replaceFragment(fragment: Fragment, addStack: Boolean = tr
             .replace(R.id.data_container, fragment)
             .commit()
     }
-
-
 }
 
 fun Fragment.replaceFragment(fragment: Fragment) {
-    //check if this works like deprecated fragmentManager \/
-//            fragmentManager?.beginTransaction()
     this.parentFragmentManager.beginTransaction()
         .addToBackStack(null)
         .replace(R.id.data_container, fragment)

@@ -47,8 +47,10 @@
         app:layout_constraintTop_toBottomOf="@id/register_please_code_text" />
 
     <EditText
+        android:layout_width="wrap_content"
         android:id="@+id/register_edit_code"
         android:hint="@string/register_hint_enter_code"
+        android:textSize="32sp"
         style="@style/edit_text"
         android:layout_marginTop="@dimen/margin_vertical"
         android:autofillHints="sms_code"
