@@ -1,6 +1,9 @@
 package com.example.mymessenger
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import com.example.mymessenger.activities.RegisterActivity
@@ -9,6 +12,7 @@ import com.example.mymessenger.models.User
 import com.example.mymessenger.ui.fragments.ChatsFragment
 import com.example.mymessenger.ui.objects.AppDrawer
 import com.example.mymessenger.utils.*
+import com.theartofdev.edmodo.cropper.CropImage
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,10 +24,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mBinding.root)
-    }
-
-    override fun onStart() {
-        super.onStart()
+        APP_ACTIVITY = this
         initFields()
         initFunc()
     }
@@ -49,7 +50,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initUser() {
-        REF_DATABASE_ROOT.child(NODE_USERS).child(UID)
+        REF_DATABASE_ROOT.child(NODE_USERS).child(CURRENT_UID)
             .addListenerForSingleValueEvent(AppValueEventListener {
                 USER = it.getValue(User::class.java) ?: User()
             })
