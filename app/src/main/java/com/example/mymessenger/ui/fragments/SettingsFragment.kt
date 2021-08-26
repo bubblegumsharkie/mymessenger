@@ -8,7 +8,6 @@ import android.view.MenuItem
 import com.example.mymessenger.R
 import com.example.mymessenger.activities.RegisterActivity
 import com.example.mymessenger.utils.*
-import com.squareup.picasso.Picasso
 import com.theartofdev.edmodo.cropper.CropImage
 import com.theartofdev.edmodo.cropper.CropImageView
 import kotlinx.android.synthetic.main.fragment_settings.*
@@ -25,8 +24,11 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         settings_about.text = USER.bio
         settings_person_name.text = USER.fullname
         settings_phone_number.text = USER.phone
-        settings_status.text = USER.status
+        settings_status.text = USER.state
         settings_username.text = USER.username
+
+        //image
+        settings_profile_image.downloadAndSetImage(USER.photoUrl)
 
         //Buttons
         settings_username_field.setOnClickListener {
@@ -73,25 +75,16 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         ) {
             val uri = CropImage.getActivityResult(data).uri
             val path = REF_STORAGE_ROOT.child(FOLDER_PROFILE_IMAGE).child(CURRENT_UID)
-            path.putFile(uri).addOnCompleteListener { putFile ->
-                if (putFile.isSuccessful) {
-                    path.downloadUrl.addOnCompleteListener { downloadUrl ->
-                        if (downloadUrl.isSuccessful) {
-                            val photoUrl = downloadUrl.result.toString()
-                            REF_DATABASE_ROOT
-                                .child(NODE_USERS)
-                                .child(CURRENT_UID)
-                                .child(CHILD_USER_PIC_URI)
-                                .setValue(photoUrl).addOnCompleteListener { setPhotoUrl ->
-                                    if (setPhotoUrl.isSuccessful) {
-                                        settings_profile_image.downloadAndSetImage(photoUrl)
-                                        showToast("Upload success")
-                                        USER.photoUrl = photoUrl
-                                    } else { println(setPhotoUrl.exception?.message) }
-                                }
-                        } else { println(downloadUrl.exception?.message) }
+
+            putImageToStorage(uri, path) {
+                getUrlFromStorage(path) {
+                    putUrlToDB(it) {
+                        settings_profile_image.downloadAndSetImage(it)
+                        showToast("Upload success")
+                        USER.photoUrl = it
+                        APP_ACTIVITY.mDrawer.updateHeader()
                     }
-                } else { println(putFile.exception?.message) }
+                }
             }
         }
     }
