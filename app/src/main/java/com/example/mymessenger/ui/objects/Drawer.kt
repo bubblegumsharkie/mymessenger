@@ -145,6 +145,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, val mToolbar: Toolbar) {
             .withName(USER.fullname)
             .withEmail(USER.phone)
             .withIcon(USER.photoUrl)
+            .withIdentifier(200)
 
         mHeader.updateProfile(mCurrentProfile)
     }

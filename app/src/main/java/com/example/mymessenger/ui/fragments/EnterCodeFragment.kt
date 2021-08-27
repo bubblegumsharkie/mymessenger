@@ -33,21 +33,18 @@ class EnterCodeFragment(val phoneNumber: String, val id: String) :
                 dateMap[CHILD_PHONE] = phoneNumber
                 dateMap[CHILD_USERNAME] = uid
 
-                REF_DATABASE_ROOT.child(NODE_USERS).child(uid).updateChildren(dateMap)
-                    .addOnCompleteListener { taskAuth ->
-                        println(taskAuth.toString())
-                        if (taskAuth.isSuccessful) {
-                            showToast("Authentication completed!")
-                            (activity as RegisterActivity).replaceActivity(MainActivity())
-                        } else {
-                            showToast(taskAuth.exception?.message.toString())
-                            println("DALEK!" + taskAuth.exception?.message.toString())
-                        }
+                REF_DATABASE_ROOT.child(NODE_PHONES).child(phoneNumber).setValue(uid)
+                    .addOnFailureListener { showToast(it.message.toString()) }
+                    .addOnSuccessListener {
+                        REF_DATABASE_ROOT.child(NODE_USERS).child(uid).updateChildren(dateMap)
+                            .addOnFailureListener { showToast(it.message.toString()) }
+                            .addOnSuccessListener {
+                                showToast("Authentication completed!")
+                                APP_ACTIVITY.replaceActivity(MainActivity())
+                            }
                     }
-            } else {
-                showToast(taskSignIn.exception?.message.toString())
-                println(taskSignIn.exception?.message.toString())
             }
+
         }
     }
 }
