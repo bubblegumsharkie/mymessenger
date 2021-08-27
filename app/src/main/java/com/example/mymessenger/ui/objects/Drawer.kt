@@ -4,11 +4,11 @@ import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.view.View
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import com.example.mymessenger.R
+import com.example.mymessenger.ui.fragments.ContactsFragment
 import com.example.mymessenger.ui.fragments.SettingsFragment
+import com.example.mymessenger.utils.APP_ACTIVITY
 import com.example.mymessenger.utils.USER
 import com.example.mymessenger.utils.downloadAndSetImage
 import com.example.mymessenger.utils.replaceFragment
@@ -23,7 +23,7 @@ import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader
 import com.mikepenz.materialdrawer.util.DrawerImageLoader
 
-class AppDrawer(val mainActivity: AppCompatActivity, val mToolbar: Toolbar) {
+class AppDrawer {
 
     private lateinit var mDrawer: Drawer
     private lateinit var mHeader: AccountHeader
@@ -40,26 +40,26 @@ class AppDrawer(val mainActivity: AppCompatActivity, val mToolbar: Toolbar) {
 
     fun disableDrawer() {
         mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = false
-        mainActivity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        APP_ACTIVITY.supportActionBar?.setDisplayHomeAsUpEnabled(true)
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-        mToolbar.setNavigationOnClickListener {
-            mainActivity.supportFragmentManager.popBackStack()
+        APP_ACTIVITY.mToolbar.setNavigationOnClickListener {
+            APP_ACTIVITY.supportFragmentManager.popBackStack()
         }
     }
 
     fun enableDrawer() {
-        mainActivity.supportActionBar?.setDisplayHomeAsUpEnabled(false)
+        APP_ACTIVITY.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         mDrawer.actionBarDrawerToggle?.isDrawerIndicatorEnabled = true
         mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
-        mToolbar.setNavigationOnClickListener {
+        APP_ACTIVITY.mToolbar.setNavigationOnClickListener {
             mDrawer.openDrawer()
         }
     }
 
     private fun createDrawer() {
         mDrawer = DrawerBuilder()
-            .withActivity(mainActivity)
-            .withToolbar(mToolbar)
+            .withActivity(APP_ACTIVITY)
+            .withToolbar(APP_ACTIVITY.mToolbar)
             .withActionBarDrawerToggle(true)
             .withSelectedItem(-1)
             .withAccountHeader(mHeader)
@@ -117,14 +117,20 @@ class AppDrawer(val mainActivity: AppCompatActivity, val mToolbar: Toolbar) {
                     drawerItem: IDrawerItem<*>
                 ): Boolean {
                     println(position)
-                    when (position) {
-                        7 -> mainActivity.replaceFragment(SettingsFragment())
-                    }
+                    drawerClickItem(position)
                     return false
                 }
             })
             .build()
     }
+
+    private fun drawerClickItem(pos: Int) {
+        when (pos) {
+            7 -> APP_ACTIVITY.replaceFragment(SettingsFragment())
+            4 -> APP_ACTIVITY.replaceFragment(ContactsFragment())
+        }
+    }
+
 
     private fun createHeader() {
         mCurrentProfile = ProfileDrawerItem()
@@ -133,7 +139,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, val mToolbar: Toolbar) {
             .withIcon(USER.photoUrl)
             .withIdentifier(200)
         mHeader = AccountHeaderBuilder()
-            .withActivity(mainActivity)
+            .withActivity(APP_ACTIVITY)
             .withHeaderBackground(R.drawable.header)
             .addProfiles(
                 mCurrentProfile
@@ -150,7 +156,7 @@ class AppDrawer(val mainActivity: AppCompatActivity, val mToolbar: Toolbar) {
         mHeader.updateProfile(mCurrentProfile)
     }
 
-    fun initImageLoader() {
+    private fun initImageLoader() {
         DrawerImageLoader.init(object :AbstractDrawerImageLoader() {
             override fun set(imageView: ImageView, uri: Uri, placeholder: Drawable) {
                 imageView.downloadAndSetImage(uri.toString())

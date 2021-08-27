@@ -83,7 +83,6 @@ fun uploadContactsToDatabase(arrayOfContacts: ArrayList<ContactModel>) {
     })
 }
 
-
 inline fun putUrlToDB(url: String, crossinline function: () -> Unit) {
     REF_DATABASE_ROOT
         .child(NODE_USERS)

@@ -3,10 +3,7 @@ package com.example.mymessenger.ui.fragments
 import com.example.mymessenger.MainActivity
 import com.example.mymessenger.R
 import com.example.mymessenger.activities.RegisterActivity
-import com.example.mymessenger.utils.AUTH
-import com.example.mymessenger.utils.replaceActivity
-import com.example.mymessenger.utils.replaceFragment
-import com.example.mymessenger.utils.showToast
+import com.example.mymessenger.utils.*
 import com.google.firebase.FirebaseException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.PhoneAuthCredential
@@ -23,6 +20,7 @@ class EnterPhoneNumberFragment : BaseFragment(R.layout.fragment_enter_phone_numb
 
     override fun onStart() {
         super.onStart()
+        APP_ACTIVITY.title = "Login"
         AUTH = FirebaseAuth.getInstance()
         mCallBack = object : PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
             override fun onVerificationCompleted(p0: PhoneAuthCredential) {

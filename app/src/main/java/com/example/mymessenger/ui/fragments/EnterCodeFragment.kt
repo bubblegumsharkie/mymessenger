@@ -7,7 +7,7 @@ import com.example.mymessenger.utils.*
 import com.google.firebase.auth.PhoneAuthProvider
 import kotlinx.android.synthetic.main.fragment_enter_code.*
 
-class EnterCodeFragment(val phoneNumber: String, val id: String) :
+class EnterCodeFragment(private val phoneNumber: String, val id: String) :
     BaseFragment(R.layout.fragment_enter_code) {
 
 

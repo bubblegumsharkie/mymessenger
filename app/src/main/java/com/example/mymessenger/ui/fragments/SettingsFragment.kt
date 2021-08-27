@@ -18,6 +18,7 @@ class SettingsFragment : BaseFragment(R.layout.fragment_settings) {
         super.onResume()
         setHasOptionsMenu(true)
         initFields()
+        APP_ACTIVITY.title = "Settings"
     }
 
     private fun initFields() {

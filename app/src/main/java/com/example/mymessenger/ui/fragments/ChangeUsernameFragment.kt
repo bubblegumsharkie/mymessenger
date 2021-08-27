@@ -59,6 +59,7 @@ class ChangeUsernameFragment : BaseEditFragment(R.layout.fragment_change_usernam
     override fun onResume() {
         super.onResume()
         settings_input_username.setText(USER.username)
+        APP_ACTIVITY.title = "Edit username"
     }
 
 }
