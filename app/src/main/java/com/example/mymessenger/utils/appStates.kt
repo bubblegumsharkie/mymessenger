@@ -1,12 +1,12 @@
 package com.example.mymessenger.utils
 
-enum class appStates(val state: String) {
+enum class AppStates(val state: String) {
     ONLINE("online"),
     OFFLINE("offline"),
     TYPING("typing");
 
     companion object {
-        fun updateState(appStates: appStates) {
+        fun updateState(appStates: AppStates) {
             REF_DATABASE_ROOT
                 .child(NODE_USERS)
                 .child(CURRENT_UID)

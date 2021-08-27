@@ -1,6 +1,8 @@
 package com.example.mymessenger.utils
 
 import android.net.Uri
+import android.provider.ContactsContract
+import com.example.mymessenger.models.ContactModel
 import com.example.mymessenger.models.User
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -18,6 +20,7 @@ const val FOLDER_PROFILE_IMAGE = "profile_image"
 
 const val NODE_USERS = "users"
 const val NODE_USERNAMES = "usernames"
+const val NODE_PHONES = "phones"
 
 const val CHILD_ID = "id"
 const val CHILD_PHONE = "phone"
@@ -33,6 +36,32 @@ fun initFirebase() {
     USER = User()
     CURRENT_UID = AUTH.currentUser?.uid.toString()
     REF_STORAGE_ROOT = FirebaseStorage.getInstance().reference
+}
+
+fun initContacts() {
+    if (checkPermissions(READ_CONTACTS)) {
+        val arrayOfContacts = arrayListOf<ContactModel>()
+        val cursor = APP_ACTIVITY.contentResolver.query(
+            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
+            null,
+            null,
+            null,
+            null
+        )
+        cursor?.let {
+            while (it.moveToNext()) {
+                val fullName =
+                    it.getString(it.getColumnIndex(ContactsContract.Contacts.DISPLAY_NAME))
+                val phone =
+                    it.getString(it.getColumnIndex((ContactsContract.CommonDataKinds.Phone.NUMBER)))
+                val newContact = ContactModel()
+                newContact.fullname = fullName
+                newContact.phone = phone.replace(Regex("[\\s, -]"), "")
+                arrayOfContacts.add(newContact)
+            }
+        }
+        cursor?.close()
+    }
 }
 
 
