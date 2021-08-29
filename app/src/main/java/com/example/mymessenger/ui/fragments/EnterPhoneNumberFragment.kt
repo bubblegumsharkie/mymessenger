@@ -1,5 +1,6 @@
 package com.example.mymessenger.ui.fragments
 
+import androidx.fragment.app.Fragment
 import com.example.mymessenger.MainActivity
 import com.example.mymessenger.R
 import com.example.mymessenger.activities.RegisterActivity
@@ -12,7 +13,7 @@ import kotlinx.android.synthetic.main.fragment_enter_phone_number.*
 import java.util.concurrent.TimeUnit
 
 
-class EnterPhoneNumberFragment : BaseFragment(R.layout.fragment_enter_phone_number) {
+class EnterPhoneNumberFragment : Fragment(R.layout.fragment_enter_phone_number) {
 
     private lateinit var mPhoneNumber: String
     private lateinit var mCallBack: PhoneAuthProvider.OnVerificationStateChangedCallbacks

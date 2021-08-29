@@ -7,5 +7,5 @@ data class ContactModel(
     var fullname: String = "",
     var state: String = "",
     var phone: String = "",
-    var photoUrl: String = " "
+    var photoUrl: String = "noUrl"
 )

@@ -51,6 +51,6 @@ fun ImageView.downloadAndSetImage(url: String) {
         .get()
         .load(url)
         .fit()
-        .placeholder(R.drawable.ic_menu_contacts)
+        .placeholder(R.drawable.ic_user_96)
         .into(this)
 }

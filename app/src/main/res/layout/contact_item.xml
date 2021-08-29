@@ -26,6 +26,7 @@
         tools:text="Alex Developerovich" />
 
     <TextView
+        android:id="@+id/contact_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         style="@style/text_small"
